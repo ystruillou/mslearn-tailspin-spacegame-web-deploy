@@ -82,6 +82,9 @@ stages:
           steps:
           - download: current
             artifact: drop
+          - script: 'echo "Web App Name Dev = $(WebAppNameDev)" '
+            displayName: 'Write Web App Name Dev variable value'
+            workingDirectory: $(wwwrootDir)
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
@@ -113,7 +116,7 @@ stages:
         arguments: '--no-build --configuration $(buildConfiguration)'
         publishTestResults: true
         projects: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
-        
+
 - stage: 'Test'
   displayName: 'Deploy to the test environment'
   dependsOn: Dev
