@@ -84,7 +84,6 @@ stages:
             artifact: drop
           - script: 'echo "Web App Name Dev = $(WebAppNameDev)" '
             displayName: 'Write Web App Name Dev variable value'
-            workingDirectory: $(wwwrootDir)
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
